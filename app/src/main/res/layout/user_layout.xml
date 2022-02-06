@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/txt_neame"
+            android:id="@+id/txt_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="AbdulSobur"
@@ -17,7 +17,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@id/txt_neame"
+            android:layout_below="@id/txt_name"
             android:background="@color/black" />
 
 </RelativeLayout>

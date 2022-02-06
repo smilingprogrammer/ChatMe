@@ -1,21 +1,15 @@
 package com.example.chatme
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.chatme.databinding.FragmentLoginBinding
+import com.example.chatme.databinding.ActivityLogInBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class LoginFragment : Fragment() {
-
-    private var _binding: FragmentLoginBinding? = null
-    private val binding get() = _binding!!
+class LogIn : AppCompatActivity() {
 
     private lateinit var edtEmail: EditText
     private lateinit var edtPassword: EditText
@@ -24,17 +18,11 @@ class LoginFragment : Fragment() {
 
     private lateinit var mAuth: FirebaseAuth
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
-        return binding.root
-    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        val binding = ActivityLogInBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         mAuth = FirebaseAuth.getInstance()
 
@@ -44,7 +32,7 @@ class LoginFragment : Fragment() {
         btnSignUp = binding.signUpBtn
 
         btnSignUp.setOnClickListener {
-            val intent = Intent(requireContext(), SignUpFragment::class.java)
+            val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
         }
 
@@ -54,18 +42,17 @@ class LoginFragment : Fragment() {
 
             login(email, password)
         }
-
     }
 
     private fun login(email: String, password: String) {
-        mAuth.createUserWithEmailAndPassword(email, password)
+        mAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
 
-                    val intent = Intent(this@LoginFragment, MainActivity::class.java)
+                    val intent = Intent(this@LogIn, MainActivity::class.java)
                     startActivity(intent)
                 } else {
-                    Toast.makeText(this@LoginFragment, "Some Error occured", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LogIn, "Some Error occurred", Toast.LENGTH_SHORT).show()
                 }
             }
     }
