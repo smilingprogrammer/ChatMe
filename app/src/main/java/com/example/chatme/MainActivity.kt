@@ -39,7 +39,17 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (postSnapShot in snapshot.children){
 
+                    userList.clear()
+                    // Adding users to the mainActivity recyclerView
+                    val currentUser = postSnapShot.getValue(User::class.java)
+
+                    // This code allows the mainActivity display the current user in the list
+                    if (mAuth.currentUser?.uid != currentUser?.uid) {
+
+                        userList.add(currentUser!!)
+                    }
                 }
+                adapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
