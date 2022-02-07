@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
 
         userList = ArrayList()
-        adapter = UserAdapter(this,userList)
+        adapter = UserAdapter(userList)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
