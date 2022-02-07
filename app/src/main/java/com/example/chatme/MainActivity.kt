@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         userRecyclerView = binding.userRecyclerView
         userRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        mDbRef.child("user").addChildEventListener(object: ValueEventListener{
+        mDbRef.child("user").addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (postSnapShot in snapshot.children){
 
