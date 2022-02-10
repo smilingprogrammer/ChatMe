@@ -1,12 +1,14 @@
 package com.example.chatme
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatme.databinding.UserLayoutBinding
+import com.google.firebase.auth.FirebaseAuth
 
-class UserAdapter(val userList: ArrayList<User>):
+class UserAdapter(val context: Context, val userList: ArrayList<User>):
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -19,6 +21,15 @@ class UserAdapter(val userList: ArrayList<User>):
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         holder.bind(userList[position])
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, ChatActivity::class.java)
+
+            intent.putExtra("name", userList[position].name)
+            intent.putExtra("uid", FirebaseAuth.getInstance().currentUser?.uid)
+
+            context.startActivity(intent)
+        }
     }
 
         inner class UserViewHolder(private val binding: UserLayoutBinding):

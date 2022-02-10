@@ -1,15 +1,34 @@
 package com.example.chatme
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatme.databinding.ReceiveBinding
 import com.example.chatme.databinding.SentBinding
+import com.example.chatme.databinding.UserLayoutBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class MessageAdapter(val messageList: ArrayList<Message>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    val ITEM_SENT = 1
+    val ITEM_RECEIVE = 2
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        TODO("Not yet implemented")
+        if (viewType == 1){
+            //inflate receive
+            return ReceiveViewHolder(
+                ReceiveBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
+        } else {
+            //inflate sent
+            return SentViewHolder(
+                SentBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
+        }
     }
 
 
@@ -37,7 +56,17 @@ class MessageAdapter(val messageList: ArrayList<Message>): RecyclerView.Adapter<
         }
     }
 
+    override fun getItemViewType(position: Int): Int {
+        val currentMessage = messageList[position]
+
+        if (FirebaseAuth.getInstance().currentUser?.uid.equals(currentMessage.senderId)){
+            return ITEM_SENT
+        } else {
+            return ITEM_RECEIVE
+        }
+    }
+
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return messageList.size
     }
 }
