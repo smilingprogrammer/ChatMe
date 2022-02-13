@@ -1,2 +1,2 @@
 # ChatMe
-An easy to use messaging project
+An easy to use and fast messaging app
