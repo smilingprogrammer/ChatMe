@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         mDbRef = FirebaseDatabase.getInstance().getReference()
 
         userList = ArrayList()
-        adapter = UserAdapter(userList)
+        adapter = UserAdapter(this, userList)
 
         //binding userRecyclerview to the RecyclerView
         userRecyclerView = binding.userRecyclerView
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
             mAuth.signOut()
             val intent = Intent(this@MainActivity, LogIn::class.java)
             finish()
-
+            startActivity(intent)
             return true
         }
         return true
