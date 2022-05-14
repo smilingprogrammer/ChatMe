@@ -26,13 +26,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         mAuth = FirebaseAuth.getInstance()
-        mDbRef = FirebaseDatabase.getInstance().getReference()
+        mDbRef = FirebaseDatabase.getInstance().reference
 
         userList = ArrayList()
         adapter = UserAdapter(this, userList)
 
         //binding userRecyclerview to the RecyclerView
         userRecyclerView = binding.userRecyclerView
+        userRecyclerView.adapter = adapter
         userRecyclerView.layoutManager = LinearLayoutManager(this)
 
         mDbRef.child("user").addValueEventListener(object: ValueEventListener{
@@ -53,7 +54,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+
             }
 
 

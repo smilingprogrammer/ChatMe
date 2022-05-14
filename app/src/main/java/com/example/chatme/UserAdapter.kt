@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.chatme.databinding.UserLayoutBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class UserAdapter(val context: Context, val userList: ArrayList<User>):
+class UserAdapter(val context: Context, private val userList: ArrayList<User>):
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {

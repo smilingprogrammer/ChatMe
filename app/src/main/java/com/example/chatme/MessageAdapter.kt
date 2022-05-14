@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatme.databinding.ReceiveBinding
 import com.example.chatme.databinding.SentBinding
-import com.example.chatme.databinding.UserLayoutBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class MessageAdapter(val messageList: ArrayList<Message>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -30,7 +29,6 @@ class MessageAdapter(val messageList: ArrayList<Message>): RecyclerView.Adapter<
             )
         }
     }
-
 
         inner class SentViewHolder(private val binding: SentBinding):
             RecyclerView.ViewHolder(binding.root){
