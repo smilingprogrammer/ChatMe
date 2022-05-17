@@ -14,7 +14,7 @@ class UserAdapter(val context: Context, private val userList: ArrayList<User>):
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         return UserViewHolder(
             UserLayoutBinding.inflate(
-                LayoutInflater.from(parent.context), parent, false
+                LayoutInflater.from(context), parent, false
             )
         )
     }
