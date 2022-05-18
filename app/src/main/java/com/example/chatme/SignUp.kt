@@ -3,6 +3,7 @@ package com.example.chatme
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -52,6 +53,7 @@ class SignUp : AppCompatActivity() {
                     val intent = Intent(this@SignUp, MainActivity::class.java)
                     startActivity(intent)
                 } else {
+                    Log.d("SignUp", "${task.exception}")
                     Toast.makeText(this@SignUp, "Some Error occurred", Toast.LENGTH_SHORT).show()
                 }
             }
