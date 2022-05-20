@@ -3,6 +3,7 @@ package com.example.chatme
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -26,21 +27,24 @@ class LogIn : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
 
-        edtEmail = binding.edtEmail
-        edtPassword = binding.edtPassword
+        edtEmail = binding.email
+        edtPassword = binding.password
         btnLogin = binding.loginBtn
         btnSignUp = binding.signUpBtn
-
-        btnSignUp.setOnClickListener {
-            val intent = Intent(this, SignUp::class.java)
-            startActivity(intent)
-        }
 
         btnLogin.setOnClickListener {
             val email = edtEmail.text.toString()
             val password =  edtPassword.text.toString()
+            if (!email.isEmpty() && !password.isEmpty()){
+                login(email, password)
+            } else {
+                Toast.makeText(this, "Invalid Email or Password", Toast.LENGTH_SHORT).show()
+            }
+        }
 
-            login(email, password)
+        btnSignUp.setOnClickListener {
+            val intent = Intent(this, SignUp::class.java)
+            startActivity(intent)
         }
     }
 

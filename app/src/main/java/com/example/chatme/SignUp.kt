@@ -30,16 +30,25 @@ class SignUp : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
 
-        edtName = binding.edtName
-        edtEmail = binding.edtEmail
-        edtPassword = binding.edtPassword
+        edtName = binding.name
+        edtEmail = binding.email
+        edtPassword = binding.password
         btnSignUp = binding.signUpBtn
 
         btnSignUp.setOnClickListener {
             val name = edtName.text.toString()
             val email = edtEmail.text.toString()
             val password = edtPassword.text.toString()
-            signUp(name, email, password)
+            if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty()){
+                signUp(name, email, password)
+            } else {
+                Toast.makeText(this, "Invalid Email, Password or Name", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.loginBtn.setOnClickListener {
+            val intent = Intent(this, LogIn::class.java)
+            startActivity(intent)
         }
     }
 
