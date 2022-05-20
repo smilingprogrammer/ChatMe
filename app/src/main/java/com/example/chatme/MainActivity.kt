@@ -3,6 +3,7 @@ package com.example.chatme
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,19 +35,20 @@ class MainActivity : AppCompatActivity() {
         //binding userRecyclerview to the RecyclerView
         userRecyclerView = binding.userRecyclerView
         userRecyclerView.adapter = adapter
+        Log.d("Adapter", "${adapter.itemCount}")
         userRecyclerView.layoutManager = LinearLayoutManager(this)
 
         mDbRef.child("user").addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                for (postSnapShot in snapshot.children){
 
-                    userList.clear()
+                userList.clear()
+
+                for (postSnapShot in snapshot.children){
                     // Adding users to the mainActivity recyclerView
                     val currentUser = postSnapShot.getValue(User::class.java)
 
                     // This code allows the mainActivity display the current user in the list
                     if (mAuth.currentUser?.uid != currentUser?.uid) {
-
                         userList.add(currentUser!!)
                     }
                 }
@@ -56,7 +58,6 @@ class MainActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
 
             }
-
 
         })
     }
