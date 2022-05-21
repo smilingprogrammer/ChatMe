@@ -40,7 +40,7 @@ class ChatActivity : AppCompatActivity() {
 
         supportActionBar?.title = name
 
-        chatRecyclerView = binding.chartRecyclerView
+        chatRecyclerView = binding.chatRecyclerView
         messageBox = binding.messageBox
         sendButton = binding.sendButton
         messageList = ArrayList()

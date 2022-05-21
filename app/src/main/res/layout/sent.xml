@@ -8,15 +8,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:background="@color/black">
+        android:layout_marginEnd="5dp">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txt_sent_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/sent_message"
             android:text="This is sent message"
-            android:textColor="@color/white"
+            android:textColor="@color/white_msg"
+            android:fontFamily="@font/montserrat_bold"
             android:padding="10dp"
             android:textSize="18sp"/>
 

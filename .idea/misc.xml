@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/ChatMe/app/src/main/res/drawable/message_box.xml" value="0.1205" />
+        <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/ChatMe/app/src/main/res/drawable/receive_message.xml" value="0.1205" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/ChatMe/app/src/main/res/drawable/rounded_edit_text.xml" value="0.137" />
+        <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/ChatMe/app/src/main/res/drawable/sent_message.xml" value="0.1205" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/ChatMe/app/src/main/res/font/montserrat_bold.xml" value="0.22314814814814815" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/ChatMe/app/src/main/res/layout/activity_chat.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/ChatMe/app/src/main/res/layout/activity_log_in.xml" value="0.20416666666666666" />
